@@ -1,4 +1,4 @@
-PrintChat("Brand Nirude LOADED")
+PrintChat("Zyra Nirude LOADED")
 BrandMenu = Menu ("Brand", "Brand")
 BrandMenu:SubMenu("Combo", "Combo")
 BrandMenu.Combo:Boolean("Q", "Use Q", true)
@@ -24,7 +24,6 @@ local Rrange = GetCastRange(myHero, _R)
   if  IOW:Mode() == "Combo" then
       local target = GetCurrentTarget()
 	  local QPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),1400,300,Qrange,60,true,false)
-	  local RPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),1100,251,Rrange,70,false,false)
 	  local WPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),1300,251,Wrange,70,false,false)
 	  
 	  
@@ -46,10 +45,9 @@ end
 
  for i,enemy in pairs(GoS:GetEnemyHeroes()) do 
 	local target = GetCurrentTarget()
-	 local RPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),1100,251,Rrange,70,false,false)
   
 if CanUseSpell(myHero,_R) == READY and GoS:ValidTarget(enemy, Rrange) and BrandMenu.Combo.R:Value() and GetCurrentHP(enemy) < GoS:CalcDamage(myHero, enemy, 0, (50*GetCastLevel(myHero,_W) + 570 + 1.0*(GetBonusAP(myHero)))) then
-CastSkillShot(_R,RPred.PredPos.x,RPred.PredPos.y,RPred.PredPos.z)   
+CastTargetSpell(target,_R)  
 	 end
 	 end
 

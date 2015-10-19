@@ -1,3 +1,4 @@
+PrintChat("Brand Nirude LOADED")
 BrandMenu = Menu ("Brand", "Brand")
 BrandMenu:SubMenu("Combo", "Combo")
 BrandMenu.Combo:Boolean("Q", "Use Q", true)

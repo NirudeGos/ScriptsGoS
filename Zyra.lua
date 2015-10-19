@@ -5,8 +5,8 @@ ZyraMenu.Combo:Boolean("Q", "Use Q", true)
 ZyraMenu.Combo:Boolean("W", "Use W", true)
 ZyraMenu.Combo:Boolean("E", "Use E", true)
 
-ZyraMenu:SubMenu("Killsteal", "Killsteal")
-ZyraMenu.Killsteal:Boolean("R", "Ks R", true)
+ZyraMenu:SubMenu("Ultimate", "Ultimate")
+ZyraMenu.Ultimate:Boolean("R", "Use R", true)
 
 ZyraMenu:SubMenu("Drawings", "Drawings")
 ZyraMenu.Drawings:Boolean("Q", "Draw Q Range", true)
@@ -45,7 +45,7 @@ if CanUseSpell(myHero, _E) == READY and EPred.HitChance == 1 and GoS:ValidTarget
 	local target = GetCurrentTarget()
 	local RPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),600,2000,Rrange,80,false,false)
   
-if CanUseSpell(myHero,_R) == READY and GoS:ValidTarget(enemy, Rrange) and ZyraMenu.Killsteal.R:Value() and GetCurrentHP(enemy) < GoS:CalcDamage(myHero, enemy, 0, (50*GetCastLevel(myHero,_W) + 560 + 1.0*(GetBonusAP(myHero)))) then
+if CanUseSpell(myHero,_R) == READY and GoS:ValidTarget(enemy, Rrange) and ZyraMenu.Ultimate.R:Value() and GetCurrentHP(enemy) < GoS:CalcDamage(myHero, enemy, 0, (50*GetCastLevel(myHero,_W) + 560 + 1.0*(GetBonusAP(myHero)))) then
 CastSkillShot(_R,RPred.PredPos.x,RPred.PredPos.y,RPred.PredPos.z)   
 	 end
 	 end

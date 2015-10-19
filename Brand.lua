@@ -40,17 +40,17 @@ local Rrange = GetCastRange(myHero, _R)
 	  
 	  	  if CanUseSpell(myHero,_E) == READY and BrandMenu.Combo.E:Value() and GoS:ValidTarget(target, Erange) and GoS:GetDistance(myHero, target) <= Erange then
 	 CastTargetSpell(target,_E)
-	 end
-	 
-	 
-	   	  if CanUseSpell(myHero,_R) == READY and BrandMenu.Combo.R:Value() and GoS:ValidTarget(target, Rrange) and GoS:GetDistance(myHero, target) <= Rrange then
-	 CastTargetSpell(target,_R)
-	 end
-	 
-
-             
-
+	 end         
 end
+
+ for i,enemy in pairs(GoS:GetEnemyHeroes()) do 
+	local target = GetCurrentTarget()
+	 local RPred = GetPredictionForPlayer(GoS:myHeroPos(),target,GetMoveSpeed(target),1100,251,Rrange,70,false,false)
+  
+if CanUseSpell(myHero,_R) == READY and GoS:ValidTarget(enemy, Rrange) and BrandMenu.Combo.R:Value() and GetCurrentHP(enemy) < GoS:CalcDamage(myHero, enemy, 0, (50*GetCastLevel(myHero,_W) + 570 + 1.0*(GetBonusAP(myHero)))) then
+CastSkillShot(_R,RPred.PredPos.x,RPred.PredPos.y,RPred.PredPos.z)   
+	 end
+	 end
 
    if BrandMenu.Drawings.Q:Value() then DrawCircle(GoS:myHeroPos().x, GoS:myHeroPos().y, GoS:myHeroPos().z,Qrange,1,100,0xff00ff00) end
    if BrandMenu.Drawings.W:Value() then DrawCircle(GoS:myHeroPos().x, GoS:myHeroPos().y, GoS:myHeroPos().z,Wrange,1,100,0xff00ff00) end
